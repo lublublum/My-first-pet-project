@@ -3,6 +3,8 @@
 #include <list>
 #include <string>
 
+#define DEBUG
+
 using namespace std;
 
 int globalAmountOfMoney = 0;
@@ -168,27 +170,9 @@ public:
         this->price.first = minPossibleValue;
         this->price.second = maxPossibleValue;
     }
-    
-    void SiteDirectionSelection(list<Site>& data)
+    vector<string> GetDirection()
     {
-       /*  for (auto it = data.begin(); it != data.end(); ++it)
-        {
-            string siteDirecttion = it->GetDirection();
-            bool flag = 1;
-            for (int j = 0; j < this->direction.size(); j++)
-            {
-                if (this->direction[j] == siteDirecttion)
-                {
-                    flag = 0;
-                    break;
-                }
-            }
-            if (flag == 1)
-            {
-                data.erase(it);
-            }
-        } */
-        
+        return this->direction;
     }
     void FillRestruction()
     {
@@ -305,9 +289,32 @@ public:
     }
 }; 
 
-void siteSelection(list<Site>& site, SiteRestructions res) 
+void SiteDirectionSelection(list<Site>& data, SiteRestructions& myRestruction)
+    {
+        for (auto it = data.begin(); it != data.end(); ++it)
+        {
+            string currentSiteDirecttion = it->GetDirection();
+            bool flag = 1;
+            for (int i = 0; i < myRestruction.GetDirection().size(); i++)
+            {
+                if (currentSiteDirecttion == myRestruction.GetDirection()[i] )
+                {
+                flag = 0;
+                break;
+                }                   
+            }
+            if (flag == 1)
+            {
+                data.erase(it);
+                it = data.begin();
+            }
+        }
+        
+    }
+
+void siteSelection(list<Site>& site, SiteRestructions& res) 
 {
-    res.SiteDirectionSelection(site);
+    SiteDirectionSelection(site, res);
 }
 
 void coordinationOfSiteSelection(list<Site>& site, Site& RightSite)
@@ -386,15 +393,26 @@ int main()
 
     list<Site> siteData = {};
     fillListOfSite(siteData);
-    
+
+#ifdef DEBUG  
     for (auto it = siteData.begin(); it != siteData.end(); ++it)
     {
         it->print();
         cout << endl;
     } 
-    
     cout << "--------------------------------------------------" << endl;
+#endif
+
     siteSelection(siteData, mySiteRestruction);
+
+#ifdef DEBUG  
+    for (auto it = siteData.begin(); it != siteData.end(); ++it)
+    {
+        it->print();
+        cout << endl;
+    } 
+    cout << "--------------------------------------------------" << endl;
+#endif
 
     Site RightSite;
     coordinationOfSiteSelection(siteData, RightSite);
