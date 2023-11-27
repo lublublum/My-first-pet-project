@@ -12,35 +12,46 @@ int globalAmountOfMoney = 0;
 class Site
 {
 private:
-    string address;
+    int address;
     string region;
     string direction;
 
-    string typeOfLend;
+    string typeOfLend = "";
     int hight;
 
     int timeInWayIn;
     int timeInWayOut;
 
-    int weidth;
-    int lenght;
+    float weidth;
+    float lenght;
     string form;
 
     int price;
-    int possibleBonus;
 
-    //neighbours
     int neighboursAverageIncome;
-    int neighboursSiteSquare;
-    int timeOfOwner;
+    int neighboursAverageSiteSquare;
+    int neighboursTtimeOfOwner;
 public:
+    static int count;
     void SetRegion(string incomeRegion)
     {
         this->region = incomeRegion;
     }
-    void SetDirection(string incomeDirection)
+    void SetDirection(string incomeRegion)
     {
-        this->direction = incomeDirection;
+        this->direction = incomeRegion;
+    }
+    void SetAddress(int incomeRegion)
+    {
+        this->address = incomeRegion;
+    }
+    void SetForm(string incomeDirection)
+    {
+        this->form = incomeDirection;
+    }
+    void SetTypeOfland(string incomeRegion)
+    {
+        this->typeOfLend = incomeRegion;
     }
     void SetWeidth(int incomeWeidth)
     {
@@ -50,6 +61,34 @@ public:
     {
         this->lenght = incomeLength;
     }
+    void SetHight(int incomeWeidth)
+    {
+        this->hight = incomeWeidth;
+    }
+    void SetPrice(int incomeWeidth)
+    {
+        this->price = incomeWeidth;
+    }
+    void SetTimeInWayIn(int incomeWeidth)
+    {
+        this->timeInWayIn = incomeWeidth;
+    }
+    void SetTimeInWayOut(int incomeWeidth)
+    {
+        this->timeInWayOut = incomeWeidth;
+    }
+    void SetNeighboursAverageIncome(int incomeWeidth)
+    {
+        this->neighboursAverageIncome = incomeWeidth;
+    }
+    void SetNeighboursAverageSiteSquare(int incomeWeidth)
+    {
+        this->neighboursAverageSiteSquare = incomeWeidth;
+    }
+    void SetNeighboursTtimeOfOwner(int incomeWeidth)
+    {
+        this->neighboursTtimeOfOwner = incomeWeidth;
+    }
     string GetRegion()
     {
         return this->region;
@@ -58,85 +97,191 @@ public:
     {
         return this->direction;
     }
-    int GetWeidth()
+    string GetTypeOfLend()
+    {
+        return this->typeOfLend;
+    }
+    string GetForm()
+    {
+        return this->form;
+    }
+    int GetAddress()
+    {
+        return this->address;
+    }
+    float GetWeidth()
     {
         return this->weidth;
     }
-    int GetLenght()
+    float GetLenght()
     {
         return this->lenght;   
+    }
+    int GetPrice()
+    {
+        return this->price;   
+    }
+    int GetHight()
+    {
+        return this->hight;   
+    }
+    int GetTimeInWayIn()
+    {
+        return this->timeInWayIn;   
+    }
+    int GetTimeInWayOut()
+    {
+        return this->timeInWayOut;   
+    }
+    int GetNeighboursAverageIncome()
+    {
+        return this->neighboursAverageIncome;   
+    }
+    int GetNeighboursAverageSiteSquare()
+    {
+        return this->neighboursAverageSiteSquare;   
+    }
+    int GetNeighboursTtimeOfOwner()
+    {
+        return this->neighboursTtimeOfOwner;   
     }
 
     void initialization(int num)
     {
+        //ignore TypeOfLand and addres
         switch (num)
         {
-        case 1: 
+        case 0:
+            this->count += 1; 
+            this->SetAddress(this->count);
             this->SetDirection("north");
-            this->SetLenght(3);
             this->SetRegion("SPB");
-            this->SetWeidth(2);
+            this->SetForm("rectangle");
+            this->SetTimeInWayIn(2);
+            this->SetTimeInWayOut(2);
+            this->SetLenght(14);
+            this->SetWeidth(7); 
+            this->SetHight(1);  
+            this->SetPrice(4);
+            this->SetNeighboursAverageIncome(7);
+            this->SetNeighboursAverageSiteSquare(77);
+            this->SetNeighboursTtimeOfOwner(7);
+            break;
+        case 1:
+            this->count += 1; 
+            this->SetAddress(this->count);
+            this->SetDirection("north");
+            this->SetRegion("SPB");
+            this->SetForm("rectangle");
+            this->SetTimeInWayIn(2);
+            this->SetTimeInWayOut(2);
+            this->SetLenght(14);
+            this->SetWeidth(7); 
+            this->SetHight(1);  
+            this->SetPrice(3);
+            this->SetNeighboursAverageIncome(7);
+            this->SetNeighboursAverageSiteSquare(77);
+            this->SetNeighboursTtimeOfOwner(7);
             break;
         case 2:
-            this->SetDirection("west");
-            this->SetLenght(5);
-            this->SetRegion("MSK");
-            this->SetWeidth(13);
+            this->count += 1; 
+            this->SetAddress(this->count);
+            this->SetDirection("north");
+            this->SetRegion("SPB");
+            this->SetForm("rectangle");
+            this->SetTimeInWayIn(2);
+            this->SetTimeInWayOut(2);
+            this->SetLenght(14);
+            this->SetWeidth(7); 
+            this->SetHight(1);  
+            this->SetPrice(6);
+            this->SetNeighboursAverageIncome(7);
+            this->SetNeighboursAverageSiteSquare(77);
+            this->SetNeighboursTtimeOfOwner(7);
             break;
-        case 0:
-            this->SetDirection("south");
-            this->SetLenght(22);
-            this->SetRegion("EKB");
-            this->SetWeidth(3);
-            break;        
+        case 3:
+            this->count += 1; 
+            this->SetAddress(this->count);
+            this->SetDirection("north");
+            this->SetRegion("SPB");
+            this->SetForm("rectangle");
+            this->SetTimeInWayIn(2);
+            this->SetTimeInWayOut(2);
+            this->SetLenght(14);
+            this->SetWeidth(7); 
+            this->SetHight(1);  
+            this->SetPrice(7);
+            this->SetNeighboursAverageIncome(7);
+            this->SetNeighboursAverageSiteSquare(77);
+            this->SetNeighboursTtimeOfOwner(7);
+            break;
+        case 4:
+            this->count += 1; 
+            this->SetAddress(this->count);
+            this->SetDirection("north");
+            this->SetRegion("SPB");
+            this->SetForm("rectangle");
+            this->SetTimeInWayIn(2);
+            this->SetTimeInWayOut(2);
+            this->SetLenght(14);
+            this->SetWeidth(7); 
+            this->SetHight(1);  
+            this->SetPrice(8);
+            this->SetNeighboursAverageIncome(7);
+            this->SetNeighboursAverageSiteSquare(77);
+            this->SetNeighboursTtimeOfOwner(7);
+            break;
         default:
             break;
         }
     }
     void print()
     {
-        cout << "Dir - " << this->GetDirection() << endl;;
-        cout << "Len - " << this->GetLenght() << endl;
+        cout << "Address - " << this->GetAddress() << endl;
+        cout << "Dir - " << this->GetDirection() << endl;
         cout << "Reg - " << this->GetRegion() << endl;
-        cout << "Weidth - " << this->GetWeidth() << endl;  
+        cout << "Len - " << this->GetLenght() << endl;
+        cout << "Weidth - " << this->GetWeidth() << endl;
+        cout << "Hight - "<< this->GetHight() << endl;  
+        cout << "Price - "<< this->GetPrice() << endl;
     }
 };
+
+int Site::count = 0;
 
 class SiteRestructions
 {
 private:
-    string name;
     vector<string> region;
     vector<string> direction;
     vector<string> form;
     vector<string> typeOfLend;
+    
+    int hight;
+    int timeInWayIn;
+    int timeInWayOut;
+    int price;
 
-    //use pair<int,int>
-    pair<int, int> hight;
-    pair<int, int> timeInWayIn;
-    pair<int, int> timeInWayOut;
-    pair<int, int> price;
     pair<int, int> square;
-    pair<int, int> lenghtToWidthRatio;
+    pair<float, float> lenghtToWidthRatio;
 
-    //neighbours
-    vector<pair<int, int>> neighboursAverageIncome;
-    vector<pair<int, int>> neighboursSiteSquare;
-    vector<pair<int, int>> timeOfOwner;   
+    vector<int> neighboursAverageIncome;
+    vector<int> neighboursAverageSiteSquare;
+    vector<int> neighboursTtimeOfOwner;   
 public:
-    void SetRegion(string income)
+    void AddRegion(string income)
     {
         this->region.push_back(income);
     }
-    void SetDirection(string income)
+    void AddDirection(string income)
     {
         this->direction.push_back(income);
     }
-    void SetTypeOfLend(string income)
+    void AddTypeOfLend(string income)
     {
         this->typeOfLend.push_back(income);
     }
-    void SetForm(string income)
+    void AddForm(string income)
     {
         this->form.push_back(income);
     }
@@ -150,43 +295,102 @@ public:
         this->square.first = minPossibleValue;
         this->square.second = maxPossibleValue;
     }
-    void SetTimeInWayIn(int minPossibleValue, int maxPossibleValue)
+    void SetTimeInWayIn(int income)
     {
-        this->timeInWayIn.first = minPossibleValue;
-        this->timeInWayIn.second = maxPossibleValue;
+        this->timeInWayIn = income;
     }
-    void SetTimeInWayOut(int minPossibleValue, int maxPossibleValue)
+    void SetTimeInWayOut(int income)
     {
-        this->timeInWayOut.first = minPossibleValue;
-        this->timeInWayOut.second = maxPossibleValue;
+        this->timeInWayOut = income;
     }
-    void SetHight(int minPossibleValue, int maxPossibleValue)
+    void SetHight(int income)
     {
-        this->hight.first = minPossibleValue;
-        this->hight.second = maxPossibleValue;
+        this->hight = income;
     }
-    void SetPrice(int minPossibleValue, int maxPossibleValue)
+    void SetPrice(int income)
     {
-        this->price.first = minPossibleValue;
-        this->price.second = maxPossibleValue;
+        this->price = income;
+    }
+    void AddNeighboursAverageIncome(int income)
+    {
+        this->neighboursAverageIncome.push_back(income);
+    }
+    void AddNeighboursAverageSiteSquare(int income)
+    {
+        this->neighboursAverageSiteSquare.push_back(income);
+    }
+    void AddNeighboursTtimeOfOwner(int income)
+    {
+        this->neighboursTtimeOfOwner.push_back(income);
     }
     vector<string> GetDirection()
     {
         return this->direction;
     }
+    vector<string> GetRegion()
+    {
+        return this->region;
+    }
+    vector<string> GetForm()
+    {
+        return this->form;
+    }
+    vector<string> GetTypeOfLand()
+    {
+        return this->typeOfLend;
+    }
+    int GetPrice()
+    {
+        return this->price;   
+    }
+    int GetHight()
+    {
+        return this->hight;   
+    }
+    int GetTimeInWayIn()
+    {
+        return this->timeInWayIn;   
+    }
+    int GetTimeInWayOut()
+    {
+        return this->timeInWayOut;   
+    }
+    vector<int> GetNeighboursAverageIncome()
+    {
+        return this->neighboursAverageIncome;
+    }
+    vector<int> GetNeighboursAverageSiteSquaree()
+    {
+        return this->neighboursAverageSiteSquare;
+    }
+    vector<int> GetNeighboursTtimeOfOwner()
+    {
+        return this->neighboursTtimeOfOwner;
+    }
+    pair<int, int> GetSquare()
+    {
+        return this->square;
+    }
+    pair<float, float> GetLenghtToWidthRatio()
+    {
+        return this->lenghtToWidthRatio;
+    }
     void FillRestruction()
     {
-        this->SetDirection("north");
-        this->SetTypeOfLend("SPB");
-        this->SetDirection("normal");
-        this->SetForm("rectangle");
-
-       /*  this->SetLenghtToWidthRatio(3);    
-        this->SetSquare(2); 
-        this->SetTimeInWayIn(2); 
+        this->AddDirection("north");
+        this->AddDirection("west");
+        this->AddRegion("SPB");
+        this->AddTypeOfLend("");
+        this->AddForm("rectangle");
+        this->SetLenghtToWidthRatio(1,3);    
+        this->SetSquare(50,100); 
+        this->SetTimeInWayIn(3); 
         this->SetTimeInWayOut(2);
-        this->SetHight(2);  
-        this->SetPrice(3); */  
+        this->SetHight(3);  
+        this->SetPrice(5);  
+        this->AddNeighboursAverageIncome(5);
+        this->AddNeighboursAverageSiteSquare(35);
+        this->AddNeighboursTtimeOfOwner(5);
     }   
 };
 
@@ -290,36 +494,162 @@ public:
 }; 
 
 void SiteDirectionSelection(list<Site>& data, SiteRestructions& myRestruction)
+{
+    for (auto it = data.begin(); it != data.end(); )
     {
-        for (auto it = data.begin(); it != data.end(); ++it)
+        string currentSiteDirecttion = it->GetDirection();
+        bool flag = 1;
+        for (int i = 0; i < myRestruction.GetDirection().size(); i++)
         {
-            string currentSiteDirecttion = it->GetDirection();
-            bool flag = 1;
-            for (int i = 0; i < myRestruction.GetDirection().size(); i++)
+            if (currentSiteDirecttion == myRestruction.GetDirection()[i] )
             {
-                if (currentSiteDirecttion == myRestruction.GetDirection()[i] )
-                {
-                flag = 0;
-                break;
-                }                   
-            }
-            if (flag == 1)
-            {
-                data.erase(it);
-                it = data.begin();
-            }
+            flag = 0;
+            break;
+            }                   
         }
-        
+        if (flag == 1)
+        {
+            data.erase(it);
+            it = data.begin();
+            continue;
+        }
+        ++it;  
+    }     
+}
+
+void SiteRegionSelection(list<Site>& data, SiteRestructions& myRestruction)
+{
+    for (auto it = data.begin(); it != data.end();)
+    {
+        string currentSiteDirecttion = it->GetRegion();
+        bool flag = 1;
+        for (int i = 0; i < myRestruction.GetRegion().size(); i++)
+        {
+            if (currentSiteDirecttion == myRestruction.GetRegion()[i] )
+            {
+            flag = 0;
+            break;
+            }                   
+        }
+        if (flag == 1)
+        {
+            data.erase(it);
+            it = data.begin();
+            continue;
+        }
+        ++it;  
+    }     
+}
+    
+void SiteTimeInWaySelection(list<Site>& data, SiteRestructions& myRestruction)
+{
+    for (auto it = data.begin(); it != data.end(); )
+    {
+        if (it->GetTimeInWayIn() > myRestruction.GetTimeInWayIn() || it->GetTimeInWayOut() > myRestruction.GetTimeInWayOut())
+        {
+            data.erase(it);
+            it = data.begin();
+            continue;
+        }
+        ++it;  
     }
+}
+
+void SiteLandscapeSelection(list<Site>& data, SiteRestructions& myRestruction)
+{
+    for (auto it = data.begin(); it != data.end();)
+    {
+        string currentSiteTypeOfLand = it->GetTypeOfLend();
+        bool flag1 = 1;
+        bool flag2 = 1;
+        if (it->GetHight() <= myRestruction.GetHight())
+        {
+            flag1 = 0;
+        }                   
+        for (int i = 0; i < myRestruction.GetTypeOfLand().size(); i++)
+        {
+            if (currentSiteTypeOfLand == myRestruction.GetTypeOfLand()[i] )
+            {
+            flag2 = 0;
+            break;
+            }                   
+        }
+        if ( flag1 == 1 || flag2 == 1)
+        {
+            data.erase(it);
+            it = data.begin();
+            continue;
+        }
+        ++it;  
+    }
+}
+
+void SiteSquareSelection(list<Site>& data, SiteRestructions& myRestruction)
+{
+    for (auto it = data.begin(); it != data.end();)
+    {
+        bool flag1 = 1;
+        bool flag2 = 1;
+        bool flag3 = 1;
+        float currentLenghtToWidthRatio = it->GetLenght() / it->GetWeidth();
+        int currentSquare = it->GetLenght() * it->GetWeidth();
+        string currentForm = it->GetForm();
+        if(currentLenghtToWidthRatio >= myRestruction.GetLenghtToWidthRatio().first 
+            && currentLenghtToWidthRatio <= myRestruction.GetLenghtToWidthRatio().second)
+        {
+            flag1 = 0;
+        }
+        if(currentSquare >= myRestruction.GetSquare().first 
+            && currentSquare <= myRestruction.GetSquare().second)
+        {
+            flag2 = 0;
+        }
+        for (int i = 0; i < myRestruction.GetForm().size(); i++)
+        {
+            if (currentForm == myRestruction.GetForm()[i] )
+            {
+            flag3 = 0;
+            break;
+            }                   
+        }
+        if ( flag1 == 1 || flag2 == 1 || flag3 == 1 )
+        {
+            data.erase(it);
+            it = data.begin();
+            continue;
+        }
+        ++it;  
+    }
+}
+
+void SitePriceSelection(list<Site>& data, SiteRestructions& myRestruction)
+{
+    for (auto it = data.begin(); it != data.end(); )
+    {
+        if (it->GetPrice() > myRestruction.GetPrice() )
+        {
+            data.erase(it);
+            it = data.begin();
+            continue;
+        }
+        ++it;  
+    }
+}
 
 void siteSelection(list<Site>& site, SiteRestructions& res) 
 {
     SiteDirectionSelection(site, res);
+    SiteRegionSelection(site, res);
+    SiteTimeInWaySelection(site, res);
+    SiteLandscapeSelection(site, res);
+    SiteSquareSelection(site, res);
+    //SiteNeighboursSelection(site, res);
+    SitePriceSelection(site, res);
 }
 
 void coordinationOfSiteSelection(list<Site>& site, Site& RightSite)
 {
-    int r = rand() % (site.size()-1);
+    int r = rand() % (site.size());
     auto it = site.begin();
     advance(it, r);
     RightSite = *it;
@@ -375,10 +705,10 @@ void movingToNewHome()
 
 void fillListOfSite(list<Site>& siteData)
 {
-    siteData.resize(10);
+    siteData.resize(30);
     for (auto it = siteData.begin(); it != siteData.end(); ++it)
     {
-        int n = rand()%3;
+        int n = rand()%5;
         it->initialization(n);
     }
 }
@@ -416,7 +746,7 @@ int main()
 
     Site RightSite;
     coordinationOfSiteSelection(siteData, RightSite);
-    cout << "region: " << RightSite.GetRegion() << endl << "--------------------------------------------------" << endl;
+    cout << "address: " << RightSite.GetAddress() << endl << "--------------------------------------------------" << endl;
     
     DesignProject myProlect;
     DesignProject LandscapeWorksProject;
@@ -424,7 +754,7 @@ int main()
    
     buildingDesign(RightSite, myProlect, LandscapeWorksProject, ProjectsOfOtherStructures);
    
-    cout << "region: " << myProlect.GetRegion() << endl;
+    cout << "address: " << RightSite.GetAddress() << endl;
     cout << myProlect.GetStatus()<< endl;
     for (auto it = ProjectsOfOtherStructures.begin(); it != ProjectsOfOtherStructures.end(); ++it)
     {
@@ -435,7 +765,7 @@ int main()
 
     Home MyHouse;
     homeConstruction(MyHouse, myProlect);
-    cout << "region: " << MyHouse.GetRegion() << endl;
+    cout << "address: " << RightSite.GetAddress() << endl;
     cout << MyHouse.GetStatus()<< endl <<  "--------------------------------------------------" << endl;
 
    
