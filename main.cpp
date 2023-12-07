@@ -2,224 +2,61 @@
 #include <vector>
 #include <list>
 #include <string>
+#include "siteSelection.h"
+
+
+#define DEBUG
 
 using namespace std;
 
 int globalAmountOfMoney = 0;
 
-class Site
+class Point
 {
 private:
-    string address;
-    string region;
-    string direction;
+    int x;
+    int y;
+public: 
 
-    string typeOfLend;
-    int hight;
-
-    int timeInWayIn;
-    int timeInWayOut;
-
-    int weidth;
-    int lenght;
-    string form;
-
-    int price;
-    int possibleBonus;
-
-    //neighbours
-    int neighboursAverageIncome;
-    int neighboursSiteSquare;
-    int timeOfOwner;
-public:
-    void SetRegion(string incomeRegion)
+    void SetX(int x)
     {
-        this->region = incomeRegion;
+        this->x = x;
     }
-    void SetDirection(string incomeDirection)
+    void SetY(int y)
     {
-        this->direction = incomeDirection;
+        this->y = y;
     }
-    void SetWeidth(int incomeWeidth)
+    int GetX()
     {
-        this->weidth = incomeWeidth;
+        return this->x;
     }
-    void SetLenght(int incomeLength)
+    int GetY()
     {
-        this->lenght = incomeLength;
+        return this->y;
+    }  
+    Point()
+    {
+        this->SetX(0);
+        this->SetY(0);
     }
-    string GetRegion()
+    Point(int x, int y)
     {
-        return this->region;
-    }
-    string GetDirection()
-    {
-        return this->direction;
-    }
-    int GetWeidth()
-    {
-        return this->weidth;
-    }
-    int GetLenght()
-    {
-        return this->lenght;   
-    }
-
-    void initialization(int num)
-    {
-        switch (num)
-        {
-        case 1: 
-            this->SetDirection("north");
-            this->SetLenght(3);
-            this->SetRegion("SPB");
-            this->SetWeidth(2);
-            break;
-        case 2:
-            this->SetDirection("west");
-            this->SetLenght(5);
-            this->SetRegion("MSK");
-            this->SetWeidth(13);
-            break;
-        case 0:
-            this->SetDirection("south");
-            this->SetLenght(22);
-            this->SetRegion("EKB");
-            this->SetWeidth(3);
-            break;        
-        default:
-            break;
-        }
-    }
-    void print()
-    {
-        cout << "Dir - " << this->GetDirection() << endl;;
-        cout << "Len - " << this->GetLenght() << endl;
-        cout << "Reg - " << this->GetRegion() << endl;
-        cout << "Weidth - " << this->GetWeidth() << endl;  
+        this->SetX(x);
+        this->SetY(y);
     }
 };
 
-class SiteRestructions
-{
-private:
-    string name;
-    vector<string> region;
-    vector<string> direction;
-    vector<string> form;
-    vector<string> typeOfLend;
-
-    //use pair<int,int>
-    pair<int, int> hight;
-    pair<int, int> timeInWayIn;
-    pair<int, int> timeInWayOut;
-    pair<int, int> price;
-    pair<int, int> square;
-    pair<int, int> lenghtToWidthRatio;
-
-    //neighbours
-    vector<pair<int, int>> neighboursAverageIncome;
-    vector<pair<int, int>> neighboursSiteSquare;
-    vector<pair<int, int>> timeOfOwner;   
-public:
-    void SetRegion(string income)
-    {
-        this->region.push_back(income);
-    }
-    void SetDirection(string income)
-    {
-        this->direction.push_back(income);
-    }
-    void SetTypeOfLend(string income)
-    {
-        this->typeOfLend.push_back(income);
-    }
-    void SetForm(string income)
-    {
-        this->form.push_back(income);
-    }
-    void SetLenghtToWidthRatio(int minPossibleValue, int maxPossibleValue)
-    {
-        this->lenghtToWidthRatio.first = minPossibleValue;
-        this->lenghtToWidthRatio.second = maxPossibleValue;
-    }
-    void SetSquare(int minPossibleValue, int maxPossibleValue)
-    {
-        this->square.first = minPossibleValue;
-        this->square.second = maxPossibleValue;
-    }
-    void SetTimeInWayIn(int minPossibleValue, int maxPossibleValue)
-    {
-        this->timeInWayIn.first = minPossibleValue;
-        this->timeInWayIn.second = maxPossibleValue;
-    }
-    void SetTimeInWayOut(int minPossibleValue, int maxPossibleValue)
-    {
-        this->timeInWayOut.first = minPossibleValue;
-        this->timeInWayOut.second = maxPossibleValue;
-    }
-    void SetHight(int minPossibleValue, int maxPossibleValue)
-    {
-        this->hight.first = minPossibleValue;
-        this->hight.second = maxPossibleValue;
-    }
-    void SetPrice(int minPossibleValue, int maxPossibleValue)
-    {
-        this->price.first = minPossibleValue;
-        this->price.second = maxPossibleValue;
-    }
-    
-    void SiteDirectionSelection(list<Site>& data)
-    {
-       /*  for (auto it = data.begin(); it != data.end(); ++it)
-        {
-            string siteDirecttion = it->GetDirection();
-            bool flag = 1;
-            for (int j = 0; j < this->direction.size(); j++)
-            {
-                if (this->direction[j] == siteDirecttion)
-                {
-                    flag = 0;
-                    break;
-                }
-            }
-            if (flag == 1)
-            {
-                data.erase(it);
-            }
-        } */
-        
-    }
-    void FillRestruction()
-    {
-        this->SetDirection("north");
-        this->SetTypeOfLend("SPB");
-        this->SetDirection("normal");
-        this->SetForm("rectangle");
-
-       /*  this->SetLenghtToWidthRatio(3);    
-        this->SetSquare(2); 
-        this->SetTimeInWayIn(2); 
-        this->SetTimeInWayOut(2);
-        this->SetHight(2);  
-        this->SetPrice(3); */  
-    }   
-};
+int Site::count = 0;
 
 class DesignProject
 {
 private:
     string name;
     string status;
-    string region;
 public:
     void SetStatus(string status)
     {
         this->status = status;
-    }
-    void SetRegion(string region)
-    {
-        this->region = region;
     }
     void SetName(string name)
     {
@@ -232,10 +69,6 @@ public:
     string GetStatus()
     {
         return this->status;
-    }
-    string GetRegion()
-    {
-        return this->region;
     }
 };
 
@@ -305,14 +138,20 @@ public:
     }
 }; 
 
-void siteSelection(list<Site>& site, SiteRestructions res) 
+void siteSelection(list<Site>& site, SiteRestructions& res) 
 {
-    res.SiteDirectionSelection(site);
+    SiteDirectionSelection(site, res);
+    SiteRegionSelection(site, res);
+    SiteTimeInWaySelection(site, res);
+    SiteLandscapeSelection(site, res);
+    SiteSquareSelection(site, res);
+    SiteNeighboursSelection(site, res);
+    SitePriceSelection(site, res);
 }
 
 void coordinationOfSiteSelection(list<Site>& site, Site& RightSite)
 {
-    int r = rand() % (site.size()-1);
+    int r = rand() % (site.size());
     auto it = site.begin();
     advance(it, r);
     RightSite = *it;
@@ -322,7 +161,6 @@ void buildingDesign(Site& site, DesignProject& homeProject,  DesignProject& land
 {
     homeProject.SetStatus("houses design project was created");
     homeProject.SetName("HOUSE");
-    homeProject.SetRegion(site.GetRegion());
 
     otherProjects.resize(2);
     auto it = otherProjects.begin();
@@ -339,7 +177,6 @@ void buildingDesign(Site& site, DesignProject& homeProject,  DesignProject& land
 void homeConstruction(Home& home, DesignProject& project)
 {
     home.SetStatus("home was created");
-    home.SetRegion(project.GetRegion());
 }
 
 void constructionOfOtherStructures(list<DesignProject>& otherProjects, list<Home>& otherStructures)
@@ -368,10 +205,10 @@ void movingToNewHome()
 
 void fillListOfSite(list<Site>& siteData)
 {
-    siteData.resize(10);
+    siteData.resize(30);
     for (auto it = siteData.begin(); it != siteData.end(); ++it)
     {
-        int n = rand()%3;
+        int n = rand()%5;
         it->initialization(n);
     }
 }
@@ -386,19 +223,30 @@ int main()
 
     list<Site> siteData = {};
     fillListOfSite(siteData);
-    
+
+#ifdef DEBUG  
     for (auto it = siteData.begin(); it != siteData.end(); ++it)
     {
         it->print();
         cout << endl;
     } 
-    
     cout << "--------------------------------------------------" << endl;
+#endif
+
     siteSelection(siteData, mySiteRestruction);
+
+#ifdef DEBUG  
+    for (auto it = siteData.begin(); it != siteData.end(); ++it)
+    {
+        it->print();
+        cout << endl;
+    } 
+    cout << "--------------------------------------------------" << endl;
+#endif
 
     Site RightSite;
     coordinationOfSiteSelection(siteData, RightSite);
-    cout << "region: " << RightSite.GetRegion() << endl << "--------------------------------------------------" << endl;
+    cout << "address: " << RightSite.GetAddress() << endl << "--------------------------------------------------" << endl;
     
     DesignProject myProlect;
     DesignProject LandscapeWorksProject;
@@ -406,7 +254,7 @@ int main()
    
     buildingDesign(RightSite, myProlect, LandscapeWorksProject, ProjectsOfOtherStructures);
    
-    cout << "region: " << myProlect.GetRegion() << endl;
+    cout << "address: " << RightSite.GetAddress() << endl;
     cout << myProlect.GetStatus()<< endl;
     for (auto it = ProjectsOfOtherStructures.begin(); it != ProjectsOfOtherStructures.end(); ++it)
     {
@@ -417,7 +265,7 @@ int main()
 
     Home MyHouse;
     homeConstruction(MyHouse, myProlect);
-    cout << "region: " << MyHouse.GetRegion() << endl;
+    cout << "address: " << RightSite.GetAddress() << endl;
     cout << MyHouse.GetStatus()<< endl <<  "--------------------------------------------------" << endl;
 
    
